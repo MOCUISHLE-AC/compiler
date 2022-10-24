@@ -1,0 +1,6 @@
+bison -d compute_plus.y
+gcc yacctree.tab.c symboltable.h -o yacctree
+
+#windows中查看wsl中文件夹
+explorer.exe .
+11111
