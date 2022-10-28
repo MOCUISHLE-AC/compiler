@@ -1,25 +1,25 @@
-[DEBUG LAB4]: 	INT 	 int	 1 	 0
-[DEBUG LAB4]: 	MAIN	 main 	 1	 4
-[DEBUG LAB4]: 	LPAREN	(	 1	 8
-[DEBUG LAB4]: 	RPAREN	)	 1	 9
-[DEBUG LAB4]: 	LBRACE	{ 	 1	 10
+[DEBUG LAB4]: 	INT 	 int	        1 	        0
+[DEBUG LAB4]: 	MAIN	 main 	        1	        4
+[DEBUG LAB4]: 	LPAREN	(	        1	        8
+[DEBUG LAB4]: 	RPAREN	)	        1	        9
+[DEBUG LAB4]: 	LBRACE	{ 	        1	       10
 [DEBUG LAB4]: 	此处为行注释
-[DEBUG LAB4]: 	INT 	 int	 3 	 4
-[DEBUG LAB4]: 	ID: 	 BIN 	 3	 8 	 0x55c9e0cdb0a0
-[DEBUG LAB4]: 	ASSIGN	 = 	 3 	 11
-[DEBUG LAB4]: 	DECIMIAL:	65535 	3 	 12
-[DEBUG LAB4]: 	SEMICOLON	 ;	 3	 17
-[DEBUG LAB4]: 	INT 	 int	 4 	 4
-[DEBUG LAB4]: 	ID: 	 OCT 	 4	 8 	 0x55c9e0cdb0c8
-[DEBUG LAB4]: 	ASSIGN	 = 	 4 	 11
+[DEBUG LAB4]: 	INT 	 int	        3 	        4
+[DEBUG LAB4]: 	ID: 	 BIN 	        3	        8 	 0x55fe503a40a0
+[DEBUG LAB4]: 	ASSIGN	 = 	        3 	       11
+[DEBUG LAB4]: 	DECIMIAL:	   65535 	       3 	       12
+[DEBUG LAB4]: 	SEMICOLON	 ;	        3	       17
+[DEBUG LAB4]: 	INT 	 int	        4 	        4
+[DEBUG LAB4]: 	ID: 	 OCT 	        4	        8 	 0x55fe503a40c8
+[DEBUG LAB4]: 	ASSIGN	 = 	        4 	       11
 [DEBUG LAB4]: 	OCTONARY:	65535	 4 	 12
-[DEBUG LAB4]: 	SEMICOLON	 ;	 4	 19
-[DEBUG LAB4]: 	INT 	 int	 5 	 4
-[DEBUG LAB4]: 	ID: 	 Hex 	 5	 8 	 0x55c9e0cdb0f0
-[DEBUG LAB4]: 	ASSIGN	 = 	 5 	 11
+[DEBUG LAB4]: 	SEMICOLON	 ;	        4	       19
+[DEBUG LAB4]: 	INT 	 int	        5 	        4
+[DEBUG LAB4]: 	ID: 	 Hex 	        5	        8 	 0x55fe503a40f0
+[DEBUG LAB4]: 	ASSIGN	 = 	        5 	       11
 [DEBUG LAB4]: 	HEXADECIMAL:	65535	 5	 12
-[DEBUG LAB4]: 	SEMICOLON	 ;	 5	 18
-[DEBUG LAB4]: 	RETURN	 return	 6	 1
-[DEBUG LAB4]: 	DECIMIAL:	0 	6 	 8
-[DEBUG LAB4]: 	SEMICOLON	 ;	 6	 9
-[DEBUG LAB4]: 	RBRACE	 } 	 7	 0
+[DEBUG LAB4]: 	SEMICOLON	 ;	        5	       18
+[DEBUG LAB4]: 	RETURN	 return	        6	        1
+[DEBUG LAB4]: 	DECIMIAL:	       0 	       6 	        8
+[DEBUG LAB4]: 	SEMICOLON	 ;	        6	        9
+[DEBUG LAB4]: 	RBRACE	 } 	        7	        0

@@ -41,7 +41,7 @@
         }
             return -1;
     }
-            //插入到符号表中
+    //插入到符号表中
     void insert(SymbolTable target){
         if(symbol_sum<100){
             symbol_table[symbol_sum].name=target.name;
@@ -62,6 +62,7 @@
 HEXADECIMAL (0x[a-f1-9][a-f0-9]*|0X[A-F1-9][A-F0-9]*|0)
 OCTONARY (0[1-7][0-7]*|0)
 DECIMIAL ([1-9][0-9]*|0)
+FLOATINGPOINT [0-9]*[.][0-9]+([eE][+-]?[0-9]*|[0])?f?
 
 LINECOMMENT \/\/[^\n]*
 
@@ -85,17 +86,29 @@ BLOCKCOMMENT_END "*/"
     */
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"INT \t int\t %d \t %d",yylineno,offset);
+        sprintf(temp,"INT \t int\t %8d \t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
         return INT;
     #endif
 }
+
+"float" {
+    #ifdef ONLY_FOR_LEX
+        char temp[100]={0};
+        sprintf(temp,"FLOAT \t float\t %8d \t %8d",yylineno,offset);
+        DEBUG_FOR_LAB4(temp);
+        offset += strlen(yytext);
+    #else
+        return INT;
+    #endif
+}
+
 "void" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"VOID \t void \t %d \t %d",yylineno,offset);
+        sprintf(temp,"VOID \t void \t %8d \t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -105,7 +118,7 @@ BLOCKCOMMENT_END "*/"
 "if" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"IF \t if \t %d \t %d",yylineno,offset);
+        sprintf(temp,"IF \t if \t %8d \t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -115,7 +128,7 @@ BLOCKCOMMENT_END "*/"
 "else" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"ELSE\t else\t %d\t %d",yylineno,offset);
+        sprintf(temp,"ELSE\t else\t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -125,7 +138,7 @@ BLOCKCOMMENT_END "*/"
 "return" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"RETURN\t return\t %d\t %d",yylineno,offset);
+        sprintf(temp,"RETURN\t return\t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -136,7 +149,7 @@ BLOCKCOMMENT_END "*/"
 "while" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"WHILE \t while \t %d\t %d",yylineno,offset);
+        sprintf(temp,"WHILE \t while \t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -147,7 +160,7 @@ BLOCKCOMMENT_END "*/"
 "break" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"BREAK \t break\t %d\t %d",yylineno,offset);
+        sprintf(temp,"BREAK \t break\t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -158,7 +171,7 @@ BLOCKCOMMENT_END "*/"
 "continue" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"CONTINUE \t continue\t %d\t %d",yylineno,offset);
+        sprintf(temp,"CONTINUE \t continue\t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -169,7 +182,7 @@ BLOCKCOMMENT_END "*/"
 "=" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"ASSIGN\t = \t %d \t %d",yylineno,offset);
+        sprintf(temp,"ASSIGN\t = \t %8d \t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -179,7 +192,7 @@ BLOCKCOMMENT_END "*/"
 "<" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"LESS \t < \t %d\t %d",yylineno,offset);
+        sprintf(temp,"LESS \t < \t %8d\t %8d",yylineno,offset);
            DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -189,7 +202,7 @@ BLOCKCOMMENT_END "*/"
 "+" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"ADD\t + \t %d\t %d",yylineno,offset);
+        sprintf(temp,"ADD\t + \t %8d\t %8d",yylineno,offset);
            DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -200,7 +213,7 @@ BLOCKCOMMENT_END "*/"
 "-" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"SUB\t - \t %d\t %d",yylineno,offset);
+        sprintf(temp,"SUB\t - \t %8d\t %8d",yylineno,offset);
            DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -211,7 +224,7 @@ BLOCKCOMMENT_END "*/"
 "*" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"MUL\t *\t %d\t %d",yylineno,offset);
+        sprintf(temp,"MUL\t *\t %8d\t %8d",yylineno,offset);
            DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -222,7 +235,7 @@ BLOCKCOMMENT_END "*/"
 "/" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"DIV\t /\t %d\t %d",yylineno,offset);
+        sprintf(temp,"DIV\t /\t %8d\t %8d",yylineno,offset);
            DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -233,7 +246,7 @@ BLOCKCOMMENT_END "*/"
 "%" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"MOD\t %%\t %d\t %d",yylineno,offset);
+        sprintf(temp,"MOD\t %%\t %8d\t %8d",yylineno,offset);
          DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -244,7 +257,7 @@ BLOCKCOMMENT_END "*/"
 "++" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"INC\t ++\t %d\t %d",yylineno,offset);
+        sprintf(temp,"INC\t ++\t %8d\t %8d",yylineno,offset);
            DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -254,7 +267,7 @@ BLOCKCOMMENT_END "*/"
 "--" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"DEC\t --\t %d\t %d",yylineno,offset);
+        sprintf(temp,"DEC\t --\t %8d\t %8d",yylineno,offset);
            DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -264,7 +277,7 @@ BLOCKCOMMENT_END "*/"
 "+=" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"ADDEQU\t +=\t %d\t %d",yylineno,offset);
+        sprintf(temp,"ADDEQU\t +=\t %8d\t %8d",yylineno,offset);
            DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -274,7 +287,7 @@ BLOCKCOMMENT_END "*/"
 "-=" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"SUBEQU\t -=\t %d\t %d",yylineno,offset);
+        sprintf(temp,"SUBEQU\t -=\t %8d\t %8d",yylineno,offset);
           DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -294,7 +307,7 @@ BLOCKCOMMENT_END "*/"
 "!=" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"UNEQUAL\t !=\t %d\t %d",yylineno,offset);
+        sprintf(temp,"UNEQUAL\t !=\t %8d\t %8d",yylineno,offset);
          DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -304,7 +317,7 @@ BLOCKCOMMENT_END "*/"
 ">=" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"GREEQU\t >=\t %d\t %d",yylineno,offset);
+        sprintf(temp,"GREEQU\t >=\t %8d\t %8d",yylineno,offset);
          DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -314,7 +327,7 @@ BLOCKCOMMENT_END "*/"
 "<=" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"LESEQU\t <=\t %d\t %d",yylineno,offset);
+        sprintf(temp,"LESEQU\t <=\t %8d\t %8d",yylineno,offset);
          DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -324,7 +337,7 @@ BLOCKCOMMENT_END "*/"
 "&&" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"AND\t &&\t %d\t %d",yylineno,offset);
+        sprintf(temp,"AND\t &&\t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -334,7 +347,7 @@ BLOCKCOMMENT_END "*/"
 "||" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"OR\t ||\t %d\t %d",yylineno,offset);
+        sprintf(temp,"OR\t ||\t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -344,7 +357,7 @@ BLOCKCOMMENT_END "*/"
 "!" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"NOT\t !\t %d\t %d",yylineno,offset);
+        sprintf(temp,"NOT\t !\t %8d\t %8d",yylineno,offset);
          DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -355,7 +368,7 @@ BLOCKCOMMENT_END "*/"
 ";" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"SEMICOLON\t ;\t %d\t %d",yylineno,offset);
+        sprintf(temp,"SEMICOLON\t ;\t %8d\t %8d",yylineno,offset);
          DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -365,7 +378,7 @@ BLOCKCOMMENT_END "*/"
 "(" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"LPAREN\t(\t %d\t %d",yylineno,offset);
+        sprintf(temp,"LPAREN\t(\t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -375,7 +388,7 @@ BLOCKCOMMENT_END "*/"
 ")" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"RPAREN\t)\t %d\t %d",yylineno,offset);
+        sprintf(temp,"RPAREN\t)\t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -385,7 +398,7 @@ BLOCKCOMMENT_END "*/"
 "{" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"LBRACE\t{ \t %d\t %d",yylineno,offset);
+        sprintf(temp,"LBRACE\t{ \t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
         string* mystack= new string;
@@ -398,7 +411,7 @@ BLOCKCOMMENT_END "*/"
 "}" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"RBRACE\t } \t %d\t %d",yylineno,offset);
+        sprintf(temp,"RBRACE\t } \t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
         scope_stack.pop();
@@ -409,7 +422,7 @@ BLOCKCOMMENT_END "*/"
 "[" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"LBRACKET\t [ \t %d\t %d",yylineno,offset);
+        sprintf(temp,"LBRACKET\t [ \t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -419,7 +432,7 @@ BLOCKCOMMENT_END "*/"
 "]" {
     #ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"RBRACKET\t ] \t %d\t %d",yylineno,offset);
+        sprintf(temp,"RBRACKET\t ] \t %8d\t %8d",yylineno,offset);
          DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -429,7 +442,7 @@ BLOCKCOMMENT_END "*/"
 "main" {
 	#ifdef ONLY_FOR_LEX
         char temp[100]={0};
-        sprintf(temp,"MAIN\t main \t %d\t %d",yylineno,offset);
+        sprintf(temp,"MAIN\t main \t %8d\t %8d",yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
@@ -452,12 +465,12 @@ BLOCKCOMMENT_END "*/"
         int index=lookup(id_symbol);
         if(index!=-1){
             //已经在符号表中
-            sprintf(temp,"ID: \t %s \t %d\t %d \t %p", yytext,yylineno,offset,&symbol_table[index]);
+            sprintf(temp,"ID: \t %s \t %8d\t %8d \t %p", yytext,yylineno,offset,&symbol_table[index]);
         }
         else{
             //不在符号表中
             insert(id_symbol);
-            sprintf(temp,"ID: \t %s \t %d\t %d \t %p", yytext,yylineno,offset,&symbol_table[symbol_sum]);
+            sprintf(temp,"ID: \t %s \t %8d\t %8d \t %p", yytext,yylineno,offset,&symbol_table[symbol_sum]);
             symbol_sum++;
         }
         DEBUG_FOR_LAB4(temp);
@@ -471,14 +484,24 @@ BLOCKCOMMENT_END "*/"
 	#ifdef ONLY_FOR_LEX
         char temp[mystrlen]={0};
         int num=atoi(yytext);//将字符串转化为一个整数
-        sprintf(temp,"DECIMIAL:\t%d \t%d \t %d", num,yylineno,offset);
+        sprintf(temp,"DECIMIAL:\t%8d \t%8d \t %8d", num,yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
         return DECIMIAL;
     #endif
 }
-
+{FLOATINGPOINT} {
+    #ifdef ONLY_FOR_LEX
+		char temp[mystrlen]={0};
+        float num=atoi(yytext);
+        sprintf(temp,"DECIMIAL:\t%8f \t%8d \t %8d", num,yylineno,offset);
+        DEBUG_FOR_LAB4(temp);
+        offset += strlen(yytext);
+    #else
+        return FLOATINGPOINT;
+    #endif
+}
 {HEXADECIMAL} {
 	#ifdef ONLY_FOR_LEX
 		char temp[mystrlen]={0};
