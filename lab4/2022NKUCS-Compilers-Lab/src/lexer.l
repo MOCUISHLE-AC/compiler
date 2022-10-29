@@ -483,7 +483,8 @@ BLOCKCOMMENT_END "*/"
 {DECIMIAL} {
 	#ifdef ONLY_FOR_LEX
         char temp[mystrlen]={0};
-        int num=atoi(yytext);//将字符串转化为一个整数
+        //将字符串转化为一个整数
+        int num=atoi(yytext);
         sprintf(temp,"DECIMIAL:\t%8d \t%8d \t %8d", num,yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
@@ -494,8 +495,9 @@ BLOCKCOMMENT_END "*/"
 {FLOATINGPOINT} {
     #ifdef ONLY_FOR_LEX
 		char temp[mystrlen]={0};
-        float num=atoi(yytext);
-        sprintf(temp,"DECIMIAL:\t%8f \t%8d \t %8d", num,yylineno,offset);
+        //atof转化为float
+        float num=atof(yytext);
+        sprintf(temp,"FLOAT:\t%8f \t%8d \t %8d", num,yylineno,offset);
         DEBUG_FOR_LAB4(temp);
         offset += strlen(yytext);
     #else
