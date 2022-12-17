@@ -1,0 +1,12 @@
+int main()
+{
+    int a = 1, b = 2;
+    float test=1.0;
+    if(a<=b)
+        a = 1;
+    else{
+      a = 2;
+    }
+    return 0;
+}
+

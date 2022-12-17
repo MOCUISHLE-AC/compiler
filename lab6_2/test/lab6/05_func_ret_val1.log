@@ -1,0 +1,8 @@
+Debug 	 FuncDef: void 	 Return i32
+Return have a value, but functionDef return void
+void mismatch i32 
+Debug 	 FuncDef: i32 	 Return i32
+test/lab6/05_func_ret_val1.ll:9:7: error: value doesn't match function result type 'void'
+  ret i32 %t5
+      ^
+1 error generated.

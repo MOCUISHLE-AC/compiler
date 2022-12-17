@@ -1,0 +1,3 @@
+identifier "a" is undefined
+Debug 	 FuncDef: i32 	 Return i32
+Segmentation fault

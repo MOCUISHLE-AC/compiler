@@ -1,0 +1,7 @@
+params isn't match
+Debug 	 FuncDef: i32 	 Return i32
+Debug 	 FuncDef: i32 	 Return i32
+test/level1-2/1075_max_container.ll:24:24: error: use of undefined value '%t18'
+  %t21 = icmp slt i32* %t18, %t20
+                       ^
+1 error generated.

@@ -1,0 +1,5 @@
+Debug 	 FuncDef: i32 	 Return i32
+test/level1-1/099_skip_spaces.ll:33:24: error: use of undefined value '%t19'
+  %t20 = add i32 %t17, %t19
+                       ^
+1 error generated.
